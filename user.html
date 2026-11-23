@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>User Dashboard - News Aggregator</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+<style>
+
+/* ================= RESET ================= */
+
+* {
+    box-sizing: border-box;
+}
+
+.user-page {
+    margin: 0;
+    padding: 0;
+
+    font-family: "Poppins", Arial, sans-serif;
+
+    color: #172b4d;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef6ff,
+            #ffffff,
+            #eaf4ff
+        );
+
+    overflow-x: hidden;
+}
+
+
+/* ================= HEADER ================= */
+
+.user-header {
+
+    width: 100%;
+
+    min-height: 72px;
+
+    padding: 0 7%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #dce8f5;
+
+    box-shadow:
+        0 5px 20px
+        rgba(13, 99, 199, 0.15);
+
+    position: relative;
+
+    z-index: 10;
+}
+
+
+/* NEWS AGGREGATOR LOGO */
+
+.user-logo {
+
+    margin: 0;
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    background: linear-gradient(
+        to bottom,
+        #003d99 0%,
+        #1e88ff 50%,
+        #7ec8ff 100%
+    );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    background-clip: text;
+}
+
+
+.user-nav {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+}
+
+
+.user-nav a {
+
+    padding: 7px 0;
+
+    text-decoration: none;
+
+    color: #526777;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    transition: 0.3s;
+}
+
+
+.user-nav a:hover,
+.user-nav a.active {
+
+    color: #0d63c7;
+}
+
+
+.user-nav .logout-link {
+
+    background: #ffffff;
+
+    color: #0d63c7;
+
+    padding: 10px 18px;
+
+    border-radius: 10px;
+
+    font-weight: 600;
+}
+
+
+/* ================= HERO ================= */
+
+.user-hero {
+
+    width: 94%;
+
+    max-width: 1250px;
+
+    min-height: 420px;
+
+    margin: 28px auto;
+
+    padding: 55px 7%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 50px;
+
+    border-radius: 30px;
+
+    background:
+
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(255,255,255,0.35),
+            transparent 28%
+        ),
+
+        linear-gradient(
+            135deg,
+            #075fc4,
+            #1688e8,
+            #64b8ff
+        );
+
+    box-shadow:
+        0 20px 50px
+        rgba(13, 99, 199, 0.28);
+}
+
+
+.user-hero-content {
+
+    width: 55%;
+}
+
+
+.hero-label {
+
+    display: inline-block;
+
+    margin-bottom: 16px;
+
+    padding: 8px 16px;
+
+    background:
+        rgba(255,255,255,0.18);
+
+    color: white;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.3);
+
+    border-radius: 30px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+.user-hero h1 {
+
+    margin: 0 0 15px;
+
+    color: white;
+
+    font-size: 60px;
+
+    font-weight: 700;
+
+    line-height: 1.15;
+}
+
+
+.user-hero p {
+
+    max-width: 580px;
+
+    margin: 0 0 25px;
+
+    color: #edf7ff;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+.hero-button {
+
+    display: inline-block;
+
+    padding: 13px 27px;
+
+    background: white;
+
+    color: #0d63c7;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 8px 20px
+        rgba(0,0,0,0.15);
+
+    transition: 0.3s;
+}
+
+
+.hero-button:hover {
+
+    transform: translateY(-3px);
+}
+
+
+/* ================= HERO GLOBE ================= */
+
+.hero-visual {
+
+    width: 45%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+.globe-box {
+
+    width: 330px;
+
+    height: 330px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    position: relative;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,0.18);
+
+    border:
+        2px solid
+        rgba(255,255,255,0.35);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,0.18);
+}
+
+
+.globe {
+
+    font-size: 160px;
+
+    line-height: 1;
+}
+
+
+.globe-news {
+
+    position: absolute;
+
+    padding: 8px 15px;
+
+    background: white;
+
+    color: #0d63c7;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    box-shadow:
+        0 8px 20px
+        rgba(0,0,0,0.15);
+}
+
+
+.news-one {
+
+    top: 18px;
+
+    right: -20px;
+}
+
+
+.news-two {
+
+    bottom: 20px;
+
+    left: -22px;
+}
+
+
+/* ================= SECTIONS ================= */
+
+.user-section {
+
+    width: 100%;
+
+    padding: 65px 25px;
+}
+
+
+.user-section-heading {
+
+    max-width: 1200px;
+
+    margin: 0 auto 35px;
+
+    text-align: center;
+}
+
+
+.user-section-heading span {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #0d63c7;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+.user-section-heading h2 {
+
+    margin: 0 0 8px;
+
+    color: #102a43;
+
+    font-size: 32px;
+}
+
+
+.user-section-heading p {
+
+    margin: 0;
+
+    color: #687b8c;
+
+    font-size: 14px;
+}
+
+
+/* ================= CATEGORY GRID ================= */
+
+.user-category-grid {
+
+    width: 100%;
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 25px;
+}
+
+
+/* ================= CATEGORY CARD ================= */
+
+.user-category-card {
+
+    min-height: 220px;
+
+    padding: 28px;
+
+    background: #ffffff;
+
+    border:
+        1px solid
+        #dfeaf5;
+
+    border-radius: 22px;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 30px
+        rgba(13, 99, 199, 0.09);
+
+    transition: 0.3s;
+}
+
+
+.user-category-card:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 18px 40px
+        rgba(13, 99, 199, 0.18);
+}
+
+
+.user-category-icon {
+
+    width: 75px;
+
+    height: 75px;
+
+    margin:
+        0 auto 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dceeff,
+            #edf7ff
+        );
+
+    font-size: 38px;
+
+    box-shadow:
+        0 8px 20px
+        rgba(13, 99, 199, 0.10);
+}
+
+
+.user-category-card h3 {
+
+    margin: 0 0 10px;
+
+    color: #102a43;
+
+    font-size: 19px;
+}
+
+
+.user-category-card p {
+
+    margin: 0;
+
+    color: #687b8c;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* ================= LATEST NEWS ================= */
+
+.user-latest-section {
+
+    background:
+        linear-gradient(
+            135deg,
+            #f2f8ff,
+            #ffffff
+        );
+}
+
+
+/* ================= 2 x 2 NEWS GRID ================= */
+
+.user-news-grid {
+
+    width: 100%;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 30px;
+}
+
+
+/* ================= NEWS CARD ================= */
+
+.news-card {
+
+    width: 100%;
+
+    background: #ffffff;
+
+    border:
+        1px solid
+        #dfeaf5;
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 12px 30px
+        rgba(13, 99, 199, 0.10);
+
+    transition: 0.3s;
+}
+
+
+.news-card:hover {
+
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 20px 40px
+        rgba(13, 99, 199, 0.18);
+}
+
+
+.news-image {
+
+    width: 100%;
+
+    height: 210px;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+.news-content {
+
+    padding: 23px;
+
+    text-align: center;
+}
+
+
+.news-category {
+
+    display: inline-block;
+
+    margin-bottom: 11px;
+
+    padding: 6px 13px;
+
+    background: #eaf4ff;
+
+    color: #0d63c7;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+.news-card h3 {
+
+    margin: 0 0 9px;
+
+    color: #102a43;
+
+    font-size: 20px;
+}
+
+
+.news-card p {
+
+    max-width: 480px;
+
+    margin: 0 auto 17px;
+
+    color: #687b8c;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+.read-more {
+
+    display: inline-block;
+
+    padding: 9px 18px;
+
+    background: #0d63c7;
+
+    color: white;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+
+.read-more:hover {
+
+    background: #084f9e;
+
+    transform: translateY(-2px);
+}
+
+
+/* ================= FOOTER ================= */
+
+.user-footer {
+
+    width: 100%;
+
+    padding: 65px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #102a43,
+            #1e4f89
+        );
+
+    color: white;
+
+    text-align: center;
+}
+
+
+.user-footer h3 {
+
+    margin: 0 0 10px;
+
+    font-size: 30px;
+}
+
+
+.user-footer p {
+
+    margin: 0;
+
+    color: #c7d6e5;
+
+    font-size: 14px;
+}
+
+
+.user-footer-line {
+
+    width: 80%;
+
+    max-width: 900px;
+
+    height: 1px;
+
+    margin: 25px auto;
+
+    background:
+        rgba(255,255,255,0.2);
+}
+
+
+/* ================= TABLET ================= */
+
+@media (max-width: 950px) {
+
+    .user-header {
+
+        padding: 15px 5%;
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+
+    .user-hero {
+
+        flex-direction: column;
+
+        text-align: center;
+
+        padding: 45px 7%;
+    }
+
+
+    .user-hero-content,
+    .hero-visual {
+
+        width: 100%;
+    }
+
+
+    .user-hero p {
+
+        margin-left: auto;
+
+        margin-right: auto;
+    }
+
+
+    .user-hero h1 {
+
+        font-size: 45px;
+    }
+
+
+    .globe-box {
+
+        width: 280px;
+
+        height: 280px;
+    }
+
+
+    .globe {
+
+        font-size: 135px;
+    }
+
+
+    .user-category-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    .user-news-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+    .user-nav {
+
+        gap: 13px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+
+    .user-hero {
+
+        width: 92%;
+
+        min-height: 0;
+
+        padding: 35px 20px;
+    }
+
+
+    .user-hero h1 {
+
+        font-size: 32px;
+
+        line-height: 1.2;
+    }
+
+
+    .user-hero p {
+
+        font-size: 14px;
+    }
+
+
+    .globe-box {
+
+        width: 210px;
+
+        height: 210px;
+    }
+
+
+    .globe {
+
+        font-size: 95px;
+    }
+
+
+    .news-one {
+
+        right: -5px;
+    }
+
+
+    .news-two {
+
+        left: -5px;
+    }
+
+
+    .user-category-grid,
+    .user-news-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .news-image {
+
+        height: 190px;
+    }
+
+
+    .user-footer h3 {
+
+        font-size: 24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body class="user-page">
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="user-header">
+
+    <div class="user-logo">
+        📰 NEWS AGGREGATOR
+    </div>
+
+
+    <nav class="user-nav">
+
+        <a href="user.html" class="active">
+            Home
+        </a>
+
+        <a href="#latest">
+            Latest News
+        </a>
+
+        <a href="#categories">
+            Categories
+        </a>
+
+        <a href="javascript:void(0)"
+           onclick="logout()"
+           class="logout-link">
+            Logout
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="user-hero">
+
+    <div class="user-hero-content">
+
+        <span class="hero-label">
+            📰 STAY UPDATED
+        </span>
+
+
+        <h1>
+            Welcome to News Aggregator
+        </h1>
+
+
+        <p>
+            Discover the latest stories, breaking updates
+            and important information from around the world.
+            Stay informed with technology, sports, education
+            and entertainment news.
+        </p>
+
+
+        <a href="#latest"
+           class="hero-button">
+            Explore News →
+        </a>
+
+    </div>
+
+
+    <div class="hero-visual">
+
+        <div class="globe-box">
+
+            <div class="globe">
+                🌍
+            </div>
+
+            <div class="globe-news news-one">
+                Latest News
+            </div>
+
+            <div class="globe-news news-two">
+                Stay Informed
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= CATEGORIES ================= -->
+
+<section class="user-section"
+         id="categories">
+
+
+    <div class="user-section-heading">
+
+        <span>
+            EXPLORE
+        </span>
+
+        <h2>
+            News Categories
+        </h2>
+
+        <p>
+            Choose a category and discover the latest updates.
+        </p>
+
+    </div>
+
+
+    <div class="user-category-grid">
+
+
+        <div class="user-category-card">
+
+            <div class="user-category-icon">
+                💻
+            </div>
+
+            <h3>
+                Technology
+            </h3>
+
+            <p>
+                Latest technology trends,
+                innovations and digital updates.
+            </p>
+
+        </div>
+
+
+        <div class="user-category-card">
+
+            <div class="user-category-icon">
+                ⚽
+            </div>
+
+            <h3>
+                Sports
+            </h3>
+
+            <p>
+                Latest sports news, updates,
+                results and events.
+            </p>
+
+        </div>
+
+
+        <div class="user-category-card">
+
+            <div class="user-category-icon">
+                🎓
+            </div>
+
+            <h3>
+                Education
+            </h3>
+
+            <p>
+                Educational opportunities,
+                learning and academic updates.
+            </p>
+
+        </div>
+
+
+        <div class="user-category-card">
+
+            <div class="user-category-icon">
+                🎬
+            </div>
+
+            <h3>
+                Entertainment
+            </h3>
+
+            <p>
+                Movies, shows, celebrities
+                and entertainment news.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= LATEST NEWS ================= -->
+
+<section class="user-section user-latest-section"
+         id="latest">
+
+
+    <div class="user-section-heading">
+
+        <span>
+            LATEST
+        </span>
+
+        <h2>
+            Latest News
+        </h2>
+
+        <p>
+            Stay updated with the latest stories.
+        </p>
+
+    </div>
+
+
+    <div class="user-news-grid">
+
+
+        <div class="news-card">
+
+            <img
+                class="news-image"
+                src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80"
+                alt="Technology News">
+
+
+            <div class="news-content">
+
+                <span class="news-category">
+                    Technology
+                </span>
+
+                <h3>
+                    AI Revolution in 2026
+                </h3>
+
+                <p>
+                    Discover the latest technology
+                    advancements and innovations
+                    shaping the future.
+                </p>
+
+                <a href="#"
+                   class="read-more">
+                    Read More →
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="news-card">
+
+            <img
+                class="news-image"
+                src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=900&q=80"
+                alt="Sports News">
+
+
+            <div class="news-content">
+
+                <span class="news-category">
+                    Sports
+                </span>
+
+                <h3>
+                    Latest Sports Updates
+                </h3>
+
+                <p>
+                    Get the latest sports results,
+                    events and important updates.
+                </p>
+
+                <a href="#"
+                   class="read-more">
+                    Read More →
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="news-card">
+
+            <img
+                class="news-image"
+                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80"
+                alt="Education News">
+
+
+            <div class="news-content">
+
+                <span class="news-category">
+                    Education
+                </span>
+
+                <h3>
+                    New Education Opportunities
+                </h3>
+
+                <p>
+                    Explore new learning opportunities,
+                    academic updates and educational news.
+                </p>
+
+                <a href="#"
+                   class="read-more">
+                    Read More →
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="news-card">
+
+            <img
+                class="news-image"
+                src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=900&q=80"
+                alt="Entertainment News">
+
+
+            <div class="news-content">
+
+                <span class="news-category">
+                    Entertainment
+                </span>
+
+                <h3>
+                    Latest Entertainment News
+                </h3>
+
+                <p>
+                    Stay updated with the latest movies,
+                    shows and entertainment stories.
+                </p>
+
+                <a href="#"
+                   class="read-more">
+                    Read More →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="user-footer">
+
+    <h3>
+        📰 NEWS AGGREGATOR
+    </h3>
+
+    <p>
+        Stay Updated. Stay Informed.
+    </p>
+
+    <div class="user-footer-line"></div>
+
+    <p>
+        © 2026 News Aggregator. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
